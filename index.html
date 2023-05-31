@@ -1,0 +1,93 @@
+<meta name="viewport" content="width=device-width, initial-scale=1"><br/><br/><br/><br/>
+<title>Concentraçao dos floculantes</title> 
+<link rel="stylesheet" type="text/css" href="sedimentaçao.css" media="screen" />
+  <script src="Sedimentaçao.js"></script>
+<header class="header" role="banner">
+    <h1 class="logo">
+      <a href="#">Teste de <span>Sedimentação </span></a>
+    </h1>    
+
+   <h3>   
+    <form name="form_main">
+      <div>
+      <span id="minute">00</span>:<span id="second">00</span>:<span id="millisecond">000</span>
+      </div>
+    
+      <br />
+    
+      <button type="button" name="start">Iniciar</button>
+      <button type="button" name="pause">Pausar</button>
+      <button type="button" name="reset">Resetar</button>
+    </form>
+    <script>"use strict";
+
+      let minute = 0;
+      let second = 0;
+      let millisecond = 0;
+      
+      let cron;
+      
+      document.form_main.start.onclick = () => start();
+      document.form_main.pause.onclick = () => pause();
+      document.form_main.reset.onclick = () => reset();
+      
+      function start() {
+        pause();
+        cron = setInterval(() => { timer(); }, 10);
+      }
+      
+      function pause() {
+        clearInterval(cron);
+      }
+      
+      function reset() {
+       
+        minute = 0;
+        second = 0;
+        millisecond = 0;
+        
+        document.getElementById('minute').innerText = '00';
+        document.getElementById('second').innerText = '00';
+        document.getElementById('millisecond').innerText = '000';
+      }
+      
+      function timer() {
+        if ((millisecond += 10) == 1000) {
+          millisecond = 0;
+          second++;
+        }
+        if (second == 60) {
+          second = 0;
+          minute++;
+        }
+        if (minute == 60) {
+          minute = 0;
+          hour++;
+        }
+        document.getElementById('minute').innerText = returnData(minute);
+        document.getElementById('second').innerText = returnData(second);
+        document.getElementById('millisecond').innerText = returnData(millisecond);
+      }
+      
+      function returnData(input) {
+        return input > 10 ? input : `0${input}`
+      }</script>     
+      <label for="Tempo_De_sedimentaçao">Tempo de Sedimentação?  </label>
+      <input type="number" name="Tempo" id="Tempo"> <br>
+
+      
+      <div id="C">Sedimentação em cm/min:</div>
+      </tr>
+      
+      <h3>
+      <button type="submit" class="botao01" onclick="Cc()">Sedimentação</button>
+      <br>
+      <br>
+      <a href="https://henriquelino17.github.io/Menu_Process_Monitoring/" class="botao02">Menu</a>
+          
+      <h5 class="resultado" contenteditable="true" id="resultado" ></h5>
+      <br>
+      
+
+</header>
+  
