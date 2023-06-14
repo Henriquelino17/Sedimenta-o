@@ -10,7 +10,7 @@ function Cc() {
     if (Check2.checked){
       var Tempo = document.getElementById("Tempo").value;
     
-      var Sedimentação = 6,7/Tempo;
+      var Sedimentação = 6.7/Tempo;
       var Sedimentação_2 = Sedimentação * 60;
     
     
